@@ -1,0 +1,8 @@
+small_shell/
+├── main.py              # Entry point  
+├── ui.py                 # Command-line interface  
+├── nlp_engine.py         # NLP processing  
+├── command_manager.py    # Command execution and permission workflow  
+├── result_translator.py  # Output parsing and summarization  
+├── config.yaml           # Configuration file  
+└── history.db            # SQLite history database  
