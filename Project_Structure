@@ -1,4 +1,4 @@
-small_shell/
+SmallShell/
 ├── main.py              # Entry point  
 ├── ui.py                 # Command-line interface  
 ├── nlp_engine.py         # NLP processing  
