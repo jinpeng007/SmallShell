@@ -5,6 +5,7 @@ class CommandManager:
     def __init__(self):
         self.history_db = "history.db"
         self.init_history_db()
+        self.allowed_commands = ["ls", "pwd", "echo", "hostname", "date", "cal"] 
 
     def init_history_db(self):
         with sqlite3.connect(self.history_db) as conn:
@@ -12,14 +13,10 @@ class CommandManager:
             cursor.execute(
                 "CREATE TABLE IF NOT EXISTS history (query TEXT, result TEXT)"
             )
-
     def handle_command(self, command: str) -> str:
-        if command == "get hostname":
-            return self.execute_system_command("hostname")
-        elif command == "get disk usage":
-            return self.execute_system_command("df -h")
-        else:
-            return f"Unknown command: '{command}'"
+        #if command.split()[0] in self.allowed_commands:
+        return self.execute_system_command(command)
+        #return f"Disallowed command: '{command}'"
 
     def execute_system_command(self, cmd: str) -> str:
         try:

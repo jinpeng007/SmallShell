@@ -1,5 +1,6 @@
 import sys
 from command_manager import CommandManager
+from nlp_engine import get_unix_command
 
 class ShellUI:
     def __init__(self):
@@ -8,12 +9,13 @@ class ShellUI:
     def run(self):
         print("Welcome to SmallShell. Type 'exit' to quit.")
         while True:
-            command = input("SmallShell> ").strip()
-            if command.lower() == "exit":
+            ask = input("SmallShell> ").strip()
+            if ask.lower() == "exit":
                 print("Goodbye!")
                 sys.exit()
-            elif command.lower() == "history":
+            elif ask.lower() == "history":
                 self.command_manager.show_history()
             else:
+                command, reason = get_unix_command(ask) 
                 result = self.command_manager.handle_command(command)
                 print(result)
